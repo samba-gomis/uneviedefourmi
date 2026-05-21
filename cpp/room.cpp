@@ -2,13 +2,30 @@
 #include <iostream>
 using namespace std;
 
-Room::Room(string name) {
+Room::Room(string name, int capacity) {
     this->name = name;
-    this->used = false;
+    this->capacity = capacity;
+    this-> currentAnts = 0;
 }
 
 void Room::addNeighbours(Room* s) {
     neighbours.push_back(s);
+}
+
+bool Room::isFull() {
+    if (capacity == 0) return false;
+    return currentAnts >= capacity;
+}
+
+bool Room::enter() {
+    if (isFull()) return false;
+    currentAnts++;
+    return true;
+}
+
+void Room::leave(){
+    if (currentAnts > 0)
+        currentAnts ++;
 }
 
 void Room::show() {

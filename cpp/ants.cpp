@@ -23,8 +23,13 @@ bool Ant::hasArrived(Room* Sd) {
 }
 
 void Ant::move() {
-    if (nextRoom() != nullptr)
+    Room* next = nextRoom();
+    if (next == nullptr) return;
+
+    if (next->enter()) {
+        currentRoom()->leave();
         currentPos++;
+    }
 }
 
 void Ant::show() {

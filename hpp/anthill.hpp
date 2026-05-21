@@ -9,8 +9,8 @@ class Anthill {
 public:
     vector<Room*> rooms;
     Ant* head;
-    Room* Sv;
-    Room* Sd;
+    Room* sv;
+    Room* sd;
     vector<vector<Room*>> findAllPaths();
     int nbAnts;
 

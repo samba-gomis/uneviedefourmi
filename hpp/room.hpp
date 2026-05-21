@@ -7,9 +7,13 @@ class Room {
 public:
     string name;
     vector<Room*> neighbours;
-    bool used;
+    int capacity;
+    int currentAnts;
 
-    Room(string name);
+    Room(string name, int capacity = 1);
     void addNeighbours(Room* s);
+    bool isFull();
+    bool enter();
+    void leave();
     void show();
 };

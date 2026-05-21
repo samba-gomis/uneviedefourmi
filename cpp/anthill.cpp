@@ -4,8 +4,8 @@ using namespace std;
 Anthill::Anthill(int nbAnts) {
     this->nbAnts = nbAnts;
     this->head = nullptr;
-    this->Sv = nullptr;
-    this->Sd = nullptr;
+    this->sv = nullptr;
+    this->sd = nullptr;
 }
 
 void Anthill::addRoom(Room* r) {
@@ -36,7 +36,7 @@ void Anthill::showAnts() {
 vector<vector<Room*>> Anthill::findAllPaths() {
     vector<vector<Room*>> result;
     queue<vector<Room*>> file;
-    file.push({Sv});
+    file.push({sv});
 
     while (!file.empty()) {
         vector<Room*> path = file.front();
@@ -44,7 +44,7 @@ vector<vector<Room*>> Anthill::findAllPaths() {
         Room* current = path.back();
 
         // chemin complet trouvé !
-        if (current == Sd) {
+        if (current == sd) {
             result.push_back(path);
             continue;
         }
