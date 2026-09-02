@@ -12,8 +12,10 @@ public:
     Ant* next;
 
     Ant(int id);
+    void setPath(const vector<Room*>& p);
     Room* currentRoom();
     Room* nextRoom();
+    int remainingSteps();
     bool hasArrived(Room* Sd);
     void move();
     void show();

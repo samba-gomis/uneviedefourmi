@@ -3,7 +3,7 @@
 #include <iostream>
 #include "room.hpp"
 #include "ants.hpp"
-#include <queue> 
+#include <queue>
 
 class Anthill {
 public:
@@ -11,12 +11,15 @@ public:
     Ant* head;
     Room* Sv;
     Room* Sd;
-    vector<vector<Room*>> findAllPaths();
     int nbAnts;
 
     Anthill(int nbAnts);
     void addRoom(Room* r);
     void addAnt(Ant* a);
+    void createAnts();
+    vector<Ant*> allAnts();
+    Room* findRoomByName(const string& name);
     void showRooms();
     void showAnts();
+    vector<vector<Room*>> findAllPaths();
 };

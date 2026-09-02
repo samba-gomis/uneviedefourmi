@@ -17,6 +17,25 @@ void Anthill::addAnt(Ant* a) {
     head = a;
 }
 
+void Anthill::createAnts() {
+    for (int i = 1; i <= nbAnts; i++)
+        addAnt(new Ant(i));
+}
+
+vector<Ant*> Anthill::allAnts() {
+    vector<Ant*> result;
+    for (Ant* current = head; current != nullptr; current = current->next)
+        result.push_back(current);
+    return result;
+}
+
+Room* Anthill::findRoomByName(const string& name) {
+    for (Room* r : rooms)
+        if (r->name == name)
+            return r;
+    return nullptr;
+}
+
 void Anthill::showRooms() {
     cout << "=== Salles ===" << endl;
     for (Room* r : rooms)
@@ -30,7 +49,6 @@ void Anthill::showAnts() {
         current->show();
         current = current->next;
     }
-    
 }
 
 vector<vector<Room*>> Anthill::findAllPaths() {
@@ -53,9 +71,9 @@ vector<vector<Room*>> Anthill::findAllPaths() {
             // éviter les cycles
             bool alreadyIn = false;
             for (Room* r : path)
-                if (r == neighbour) { 
-                    alreadyIn = true; 
-                    break; 
+                if (r == neighbour) {
+                    alreadyIn = true;
+                    break;
                 }
 
             if (!alreadyIn) {

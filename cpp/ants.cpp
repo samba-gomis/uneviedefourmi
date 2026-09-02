@@ -1,5 +1,4 @@
 #include "../hpp/ants.hpp"
-#include <iostream>
 using namespace std;
 
 Ant::Ant(int id) {
@@ -8,14 +7,23 @@ Ant::Ant(int id) {
     this->next = nullptr;
 }
 
+void Ant::setPath(const vector<Room*>& p) {
+    path = p;
+    currentPos = 0;
+}
+
 Room* Ant::currentRoom() {
     return path[currentPos];
 }
 
 Room* Ant::nextRoom() {
-    if (currentPos + 1 < path.size())
+    if (static_cast<size_t>(currentPos) + 1 < path.size())
         return path[currentPos + 1];
     return nullptr;
+}
+
+int Ant::remainingSteps() {
+    return static_cast<int>(path.size()) - 1 - currentPos;
 }
 
 bool Ant::hasArrived(Room* Sd) {
